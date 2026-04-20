@@ -1,0 +1,58 @@
+###
+# Crear Pedido Válido
+POST http://localhost:8080/api/pedidos
+Content-Type: application/json
+
+{
+  "clienteNombre": "Juan C",
+  "lineas": [
+    {
+      "productoNombre": "Mouse",
+      "cantidad": 2,
+      "precioUnitario": 150.0
+    },
+    {
+      "productoNombre": "Teclado",
+      "cantidad": 1,
+      "precioUnitario": 400.0
+    }
+  ]
+}
+
+
+###
+
+# Obtener Pedido por ID (Usa la variable guardada automáticamente del POST anterior)
+GET http://localhost:8080/api/pedidos/5f27dee3-72f0-465c-8cb3-25caa6c09a21
+
+###
+# Crear Pedido - Error (Nombre vacío)
+POST http://localhost:8080/api/pedidos
+Content-Type: application/json
+
+{
+  "clienteNombre": "",
+  "lineas": [
+    {
+      "productoNombre": "Monitor",
+      "cantidad": 1,
+      "precioUnitario": 5000.0
+    }
+  ]
+}
+
+###
+# Crear Pedido - Error (Cantidad de línea inválida)
+POST http://localhost:8080/api/pedidos
+Content-Type: application/json
+
+{
+  "clienteNombre": "Maria",
+  "lineas": [
+    {
+      "productoNombre": "Monitor",
+      "cantidad": -1,
+      "precioUnitario": 5000.0
+    }
+  ]
+}
